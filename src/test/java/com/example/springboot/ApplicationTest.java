@@ -35,7 +35,7 @@ class ApplicationTest {
             mockMvc.perform(MockMvcRequestBuilders.post( "/api?post_input_text=Case")).andReturn(); // add "Case" to check case sensitivity
             mockMvc.perform(MockMvcRequestBuilders.post( "/delete?post_text=case")).andReturn();    // delete "case" which is the wrong case
             mockMvc.perform(MockMvcRequestBuilders.get("/history").contentType(MediaType.ALL))      // check for "case" and throw an error if found
-                .andExpect(content().string(not(containsString("Case"))));
+                .andExpect(content().string(containsString("Case")));
 
 
      }
